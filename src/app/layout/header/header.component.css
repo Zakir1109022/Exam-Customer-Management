@@ -1,0 +1,39 @@
+
+header{
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+}
+.header-nav{
+    padding-bottom: 0px !important;
+    margin-bottom: 0px !important;
+    height: 65px;
+    background-color: #fff;
+}
+
+.bg-light{
+  background: rgb(109,107,152);
+  background: linear-gradient(90deg, rgba(109,107,152,1) 0%, rgba(9,240,206,0.9836309523809523) 0%, rgba(12,209,232,0.7539390756302521) 39%, rgba(33,233,241,0.9836309523809523) 88%);
+
+  /* background-color: #23b7e5;
+  background-image: linear-gradient(to right, #23b7e5 0%, #51c6ea 100%);
+  background-repeat: repeat-x; */
+  }
+
+  .nav-list{
+    margin-top: -15px;
+  }
+
+.app-name{
+    font-size: 20px;
+    color: #ffffff;
+}
+
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.log-count{
+  margin-left: 991px;
+}

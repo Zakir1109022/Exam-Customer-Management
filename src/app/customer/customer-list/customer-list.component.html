@@ -1,0 +1,13 @@
+
+<mat-card>
+    <div class="row mb-2">
+        <div class="col-md-12">
+            <mat-spinner *ngIf="loader" class="loader"></mat-spinner>
+            <button class="btn-add-car" mat-button (click)="onClickAddCustomer()">Add Customer</button>
+        </div>
+    </div>
+
+    <app-dynamic-table [columnList]="displayedColumns" [tableData]="dataList" (edit)="onEdit($event)"
+        (delete)="onDelete($event)">
+    </app-dynamic-table>
+</mat-card>

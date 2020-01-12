@@ -1,0 +1,41 @@
+<div class="row">
+
+  <div class="offset-sm-4 col-sm-4">
+    <label>Sort By</label>
+    <select class="form-control" name="sortBy" (change)="onSortBy($event.target.value)">
+      <option [value]="column" *ngFor="let column of sortableColumnList">{{column}}</option>
+    </select>
+  </div>
+
+  <div class="col-sm-4">
+    <label>Search</label>
+    <input type="search" (keyup)="onSearch($event.target.value)" placeholder="search..." class="form-control" />
+  </div>
+</div>
+<br />
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th *ngFor="let column of columnList">{{column}}</th>
+          <th *ngIf="isNeedActionField=='yes'">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of tableData | paginate: { itemsPerPage: 5, currentPage: page }">
+          <td *ngFor="let column of columnList">
+            {{column.includes('date') ? (data[column] | date:'medium') : (data[column])}}</td>
+          <td *ngIf="isNeedActionField=='yes'">
+            <button class="btn btn-primary" (click)="onClickEdit(data.id)">Edit</button>
+            &nbsp;
+            <button class="btn btn-danger" (click)="onClickDelete(data)">Delete</button>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  </div>
+</div>

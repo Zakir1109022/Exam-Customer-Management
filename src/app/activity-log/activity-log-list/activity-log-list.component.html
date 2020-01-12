@@ -1,0 +1,12 @@
+
+<mat-card>
+    <div class="row mb-2">
+        <div class="col-md-12">
+            <mat-spinner *ngIf="loader" class="loader"></mat-spinner>
+            <h4>Activity Log List</h4>
+        </div>
+    </div>
+
+    <app-dynamic-table [columnList]="displayedColumns" [tableData]="dataList" [isNeedActionField]="no" >
+    </app-dynamic-table>
+</mat-card>

@@ -1,0 +1,123 @@
+<div class="row mb-3">
+    <div class="col-md-12">
+        <mat-spinner *ngIf="loader" class="loader"></mat-spinner>
+        <mat-card>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-card-title>{{btn_text}} Customer</mat-card-title>
+                </div>
+                <div class="col-md-6">
+                    <button class="back-btn" mat-raised-button (click)="onClickBack()">Back</button>
+                </div>
+            </div>
+
+            <form [formGroup]="customerForm">
+                <div class="row">
+                    <div class="col-md-12">
+                        <mat-form-field style="width: 100%">
+                            <input matInput placeholder="Name" autocomplete="off" formControlName="name">
+                            <span>
+                                <small
+                                    *ngIf="customerForm.get('name').hasError('required') && customerForm.get('name').touched"
+                                    class="error">
+                                    Name is required
+                                </small>
+                            </span>
+                        </mat-form-field>
+                    </div>
+
+
+                    <label id="example-radio-group-label" style="padding-left: 13px;">Add Phone</label>
+                    <div class="col-md-12" formArrayName="phone"
+                        *ngFor="let phone of customerForm.get('phone')['controls']; let i = index;">
+                        <div [formGroupName]="i">
+                            <div class="row">
+                                <input type="hidden" formControlName="id">
+                                <div class="col-md-6">
+                                    <mat-form-field style="width: 100%">
+                                        <input matInput placeholder="Type" autocomplete="off" formControlName="type">
+
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field style="width: 100%">
+                                        <input matInput placeholder="Number" autocomplete="off"
+                                            formControlName="phone_number">
+
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-2 mt-4">
+                                    <mat-icon *ngIf="customerForm.get('phone')['controls'].length>1" color="warn"
+                                        class="mr-2 pointer-cursor" (click)="onClickRemovePhone(i)">
+                                        remove_circle_outline
+                                    </mat-icon>
+                                    <mat-icon *ngIf="(i+1) == (customerForm.get('phone')['controls'].length)"
+                                        color="primary" class="ml-2 pointer-cursor" (click)="onClickAddPhone()">
+                                        add_circle_outline</mat-icon>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                    <label id="example-radio-group-label" style="padding-left: 13px;">Add Email</label>
+                    <div class="col-md-12" formArrayName="email"
+                        *ngFor="let email of customerForm.get('email')['controls']; let i = index;">
+                        <div [formGroupName]="i">
+                            <div class="row">
+                                <input type="hidden" formControlName="id">
+                                <div class="col-md-6">
+                                    <mat-form-field style="width: 100%">
+                                        <input matInput placeholder="Type" autocomplete="off" formControlName="type">
+
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field style="width: 100%">
+                                        <input matInput placeholder="Email" autocomplete="off"
+                                            formControlName="email_value">
+
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-2 mt-4">
+                                    <mat-icon *ngIf="customerForm.get('email')['controls'].length>1" color="warn"
+                                        class="mr-2 pointer-cursor" (click)="onClickRemoveEmail(i)">
+                                        remove_circle_outline
+                                    </mat-icon>
+                                    <mat-icon *ngIf="(i+1) == (customerForm.get('email')['controls'].length)"
+                                        color="primary" class="ml-2 pointer-cursor" (click)="onClickAddEmail()">
+                                        add_circle_outline</mat-icon>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col-md-12">
+                        <mat-radio-group aria-label="Select an option" formControlName="gender">
+                            <mat-radio-button value="male">Male</mat-radio-button>
+                            &nbsp;
+                            <mat-radio-button value="female">Female</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+
+
+
+                    <div class="col-md-12 mt-4">
+                        <button class="save-btn pointer-cursor" [disabled]="!customerForm.valid || loader"
+                            mat-raised-button (click)="save()">{{btn_text}}</button>
+                        &nbsp;&nbsp;
+                        <button class="cancel-btn pointer-cursor" mat-raised-button
+                            (click)="onClickCancel()">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </mat-card>
+    </div>
+</div>

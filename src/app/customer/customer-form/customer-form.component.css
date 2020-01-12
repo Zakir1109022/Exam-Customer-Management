@@ -1,0 +1,21 @@
+
+.back-btn{
+    background-color: black;
+    color: white;
+    float: right;
+}
+
+.save-btn{
+    background-color: black;
+    color: white;
+}
+
+
+.cancel-btn{
+    background-color: #0cacbb;
+    color: white;
+}
+
+.img-upload{
+background-color: #35BDE7;
+}
